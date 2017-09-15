@@ -1,5 +1,6 @@
 var Zap = function (base) {
     
+    base = base || location.protocol + '//' + location.hostname
     this.baseLoc = (base.substr(-1) === '/') ? base : base + '/'
 }
 
