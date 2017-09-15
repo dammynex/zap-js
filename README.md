@@ -67,4 +67,26 @@ After you have added all routes, you'll have to trigger router to listen to rout
 $router.$trigger()
 ```
 
+### Go to route
+```javascript
+//$router.$go(path)
+$router.$go('/book/45')
+```
+
+Force all \<a> elements to follow route using jquery
+```javascript
+$( function () {
+  $('a').on('click', function (e) {
+     $router.$go( $(this).attr('href') )
+     e.preventDefault()
+  })
+})
+```
+
+Or just add data-zap attribute to \<a> elements to make them follow routes
+```html
+<a href="/book/45" data-zap>
+  Read book 45
+</a>
+```
 La fin!
