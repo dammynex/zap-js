@@ -90,13 +90,14 @@ Zap.prototype = {
 
     $on: function (path, fn) {
         
-        var path = (this.$filterPath(path)) ? this.$filterPath(path) : null,
-            regexPath = (path) ? path.replace(/\:([^(\/|?)]+)/gi, '([^\\/]+)') : '^\s*$',
-            ret = {}
+        var regexPath, ret = {}
+
+        path = (this.$filterPath(path)) ? this.$filterPath(path) : null
+        regexPath = (path === '*') ? '(.*?)' : (path) ? path.replace(/\:([^(\/|?)]+)/gi, '([^\\/]+)') : '^\s*$'
         
-        ret['regex'] = regexPath
-        ret['fn'] = fn
-        ret['rawPath'] = path
+        ret.regex = regexPath
+        ret.fn = fn
+        ret.rawPath = path
         
         this.$routes[path] = ret
         
